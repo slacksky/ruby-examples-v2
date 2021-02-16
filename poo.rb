@@ -1,11 +1,5 @@
-class Persona
-    attr_accessor :name, :age
-
-    def initialize(name, age)
-        @name = name
-        @age = age
-    end
-
+class Persona < Struct.new(:name, :age)
+    
     def self.suggested_names
         ["ash","red","satoshi"]
     end
