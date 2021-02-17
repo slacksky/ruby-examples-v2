@@ -8,10 +8,11 @@ GEM
       concurrent-ruby (~> 1.0)
 
 PLATFORMS
-  armv7l-linux-eabihf
+  armv7l-linux
+  x86_64-linux
 
 DEPENDENCIES
   faker (~> 1.9)
 
 BUNDLED WITH
-   2.2.10
+   2.2.11
