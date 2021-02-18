@@ -8,7 +8,7 @@ module Model
     end
     class Grid < Struct.new(:rows,:cols)
     end
-    class State < Struck.new(:snake, :food, :grid)
+    class State < Struct.new(:snake, :food, :grid)
     end
 
     def self.initial_state
