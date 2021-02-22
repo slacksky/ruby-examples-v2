@@ -1,5 +1,14 @@
 ##represent the state of the app
 module Model
+    module Direction
+        UP = :up
+        RIGHT = :right
+        DOWN = :down
+        LEFT = :left
+    end
+
+
+
     class Coord < Struct.new(:row,:col)
     end
     class Food < Coord
@@ -8,7 +17,7 @@ module Model
     end
     class Grid < Struct.new(:rows,:cols)
     end
-    class State < Struct.new(:snake, :food, :grid)
+    class State < Struct.new(:snake, :food, :grid, :next_direction, :game_finished )
     end
 
     def self.initial_state
@@ -18,7 +27,9 @@ module Model
                 Model::Coord.new(0,1)
             ]),
             Model::Food.new(4,4),
-            Model::Grid.new(8,12)
+            Model::Grid.new(8,12),
+            Direction::DOWN,
+            false #this sets the game as still active
         )
     end
 end
