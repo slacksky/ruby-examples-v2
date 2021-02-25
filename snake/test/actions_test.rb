@@ -1,6 +1,6 @@
 require "minitest/autorun"
 require_relative "../src/actions/actions.rb" #reference actions  and the instances avaiable 
-
+require_relative "../src/model/state.rb"
  
 class ActionsTest < Minitest::Test
     def test_move_snake
@@ -11,7 +11,7 @@ class ActionsTest < Minitest::Test
             ]),
             Model::Food.new(4,4),
             Model::Grid.new(8,12),
-            Direction::DOWN,
+            Model::Direction::DOWN,
             false 
         )
         expected_state = initial_state = Model::State.new(#confirm why the intial state is reassigned#
@@ -21,11 +21,11 @@ class ActionsTest < Minitest::Test
             ]),
             Model::Food.new(4,4),
             Model::Grid.new(8,12),
-            Direction::DOWN,
+            Model::Direction::DOWN,
             false 
         )
 
         actual_state = Actions::move_snake(initial_state)
-        assert_equal actual_state, expected state
+        assert_equal actual_state, expected_state
     end
 end

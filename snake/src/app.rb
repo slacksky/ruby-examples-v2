@@ -4,9 +4,10 @@ require_relative "model/state.rb"
 
 class App 
     def start
-        view = View::Ruby2dView.new
-        initial_state = Model::initial_state
-        view.render(initial_state)
+        puts "hello"
+        # view = View::Ruby2dView.new
+        # initial_state = Model::initial_state
+        # view.render(initial_state)
     end
     def init_timer
         loop do
@@ -15,3 +16,6 @@ class App
         end
     end
 end
+
+app = App.new
+app.start
