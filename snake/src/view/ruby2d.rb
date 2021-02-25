@@ -1,6 +1,5 @@
-
-
 require "ruby2d"
+require_relative "../model/state"
 
 module View
     class Ruby2dView
@@ -25,20 +24,28 @@ module View
 
         private
         def render_food(state)
+            extend Ruby2D::DSL 
+            @food.remove if @food
             food = state.food
-            extend Ruby2D::DSL
-            Square.new(
+            @food = Square.new(
                 x: food.col * @pixel_size, 
                 y: food.row * @pixel_size, 
                 size: @pixel_size,
                 color: 'yellow'
-              )
-
+            )
         end
+
         def render_snake(state)
-            snake = state.snake
+            # if @snake_positions
+            #     @snake_positions.each do |pos|
+            #         pos.remove
+            #     end
+            # end
+            #@snake_positions.each(&:remove) if @snake_positions ##shorter version doesn work for some reason bug maybe
+            @snake_positions.each(&:remove) if @snake_positions
             extend Ruby2D::DSL
-            snake.positions.each do |pos|
+            snake = state.snake
+            @snake_positions = snake.positions.map do |pos|
                 Square.new(
                     x: pos.col * @pixel_size, 
                     y: pos.row * @pixel_size, 
@@ -46,8 +53,6 @@ module View
                     color: 'green'
                 )
             end
-
         end
-
     end
 end
