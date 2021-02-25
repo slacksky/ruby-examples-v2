@@ -8,7 +8,7 @@ module View
             @pixel_size = 50
         end
 
-        def start
+        def start(state)
             extend Ruby2D::DSL
             set(
                 title: "Snake", 

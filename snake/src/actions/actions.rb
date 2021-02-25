@@ -58,7 +58,7 @@ module Actions
         state ##functions should return the state
     end
     def self.end_game(state)
-        state.game_finshed = true
+        state.game_finished = true
         state ##functions should return the state
     end
 end
