@@ -16,12 +16,23 @@ class ActionsTest < Minitest::Test
             false 
         )
     end
-    def test_move_snake
-        
+    def test_snake_grow
+        #continue by min 2 
+        initial_state = Model::State.new(
+            Model::Snake.new([
+                Model::Coord.new(1,1),
+                Model::Coord.new(0,1)
+            ]),
+            Model::Food.new(2,1),
+            Model::Grid.new(8,12),
+            Model::Direction::DOWN,
+            false 
+        )
         expected_state = Model::State.new(
             Model::Snake.new([
                 Model::Coord.new(2,1),
-                Model::Coord.new(1,1)
+                Model::Coord.new(1,1),
+                Model::Coord.new(0,1)
             ]),
             Model::Food.new(4,4),
             Model::Grid.new(8,12),
@@ -29,8 +40,9 @@ class ActionsTest < Minitest::Test
             false 
         )
 
-        actual_state = Actions::move_snake(@initial_state)
-        assert_equal actual_state, expected_state
+
+        actual_state = Actions::move_snake(initial_state)
+        assert_equal actual_state.snake.positions, expected_state.snake.positions
     end
 
     def test_change_direction_invalid
