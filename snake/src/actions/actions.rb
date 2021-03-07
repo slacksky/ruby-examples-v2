@@ -2,9 +2,10 @@ module Actions
     def self.move_snake(state)
         next_direction = state.curr_direction
         next_position = calc_next_position(state)
-        #verify if next speace is valid else terminate the game
+        #verify if next space is valid else terminate the game
         if position_is_food?(state, next_position)
-            grow_snake_to(state, next_position)
+            state=grow_snake_to(state, next_position)
+            generate_food(state)
         elsif position_is_valid?(state, next_position)
             move_snake_to(state,next_position)
         else
@@ -22,6 +23,14 @@ module Actions
         state
     end
     private
+
+    def self.generate_food(state)
+        #implement food generation based on random
+        new_food = Model::Food.new(rand(state.grid.rows), rand(state.grid.cols))
+        state.food = new_food
+        state
+    end
+
     def self.position_is_food?(state, next_position)
         state.food.row == next_position.row && state.food.col == next_position.col
     end

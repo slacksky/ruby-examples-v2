@@ -24,6 +24,8 @@ module View
         end
 
         def render(state)
+            extend Ruby2D::DSL
+            close if state.game_finished ##this closes the window and ends the game
             render_food(state)
             render_snake(state)
         end
